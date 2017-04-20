@@ -3,9 +3,10 @@ before_install:
 install: true
 script:
   - eval "$(ssh-agent -s)"
-  - echo -e $RESIN_DEPLOY_KEY > id_rsa
-  - chmod 0600 id_rsa
-  - ssh-add ./id_rsa
+  # - echo -e $RESIN_DEPLOY_KEY > id_rsa
+  # - chmod 0600 id_rsa
+  # - ssh-add ./id_rsa
+  - ssh-add ./deploy_key
   - cat resin-host-key >> ~/.ssh/known_hosts
   - git remote add resin $RESIN_REMOTE
   - git push resin master
